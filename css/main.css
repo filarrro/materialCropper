@@ -17,7 +17,7 @@ body {
 
 .img-container {
   min-height: 200px;
-  max-height: 516px;
+  max-height: 516px !important;
   margin-bottom: 20px;
 }
 

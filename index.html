@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Cropper.js</title>
         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="css/cropper.min.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
@@ -15,73 +16,72 @@
             <div class="img-container" flex="75">
                 <img src="img/picture.jpg" alt="Picture">
             </div>
-            <div style="margin-left: 20px;" flex>
+            <div style="margin-left: 20px;" flex layout="column">
                 <h3>Preview:</h3> 
                 <div class="docs-preview">
                     <div class="img-preview preview-lg"></div>
                     <div class="img-preview preview-md"></div>
                     <div class="img-preview preview-sm"></div>
                 </div>
-            </div>
-        </div>
-        <div layout="row">
-            <div layout="row" id="actions">
-                <div class="docs-buttons">
+                <div layout="row" id="actions">
+                    <div class="docs-buttons">
+                        <div layout="row">
+                            <md-button class="md-icon-button" aria-label="Move" data-method="setDragMode" data-option="move" title="Move">
+                                <i class="material-icons">zoom_out_map</i>
+                            </md-button>
+                            <md-button class="md-icon-button" aria-label="Crop" data-method="setDragMode" data-option="crop" title="Draw">
+                                <i class="material-icons">crop</i>
+                            </md-button>
+                        </div>
+                        <div layout="row">
+                            <md-button class="md-icon-button" aria-label="Move Left" data-method="move" data-option="-5" data-second-option="0" title="Move Left">
+                                <i class="material-icons">keyboard_arrow_left</i>
+                            </md-button>
+                            <md-button class="md-icon-button" aria-label="Move Right" data-method="move" data-option="5" data-second-option="0" title="Move Right">
+                                <i class="material-icons">keyboard_arrow_right</i>
+                            </md-button>
+                            <md-button class="md-icon-button" aria-label="Move Up" data-method="move" data-option="0" data-second-option="-5" title="Move Up">
+                                <i class="material-icons">keyboard_arrow_up</i>
+                            </md-button>
+                            <md-button class="md-icon-button" aria-label="Move Down" data-method="move" data-option="0" data-second-option="5" title="Move Down">
+                                <i class="material-icons">keyboard_arrow_down</i>
+                            </md-button>
+                        </div>
+                        <div layout="row">
+                            <md-button class="md-icon-button" aria-label="Zoom In" data-method="zoom" data-option="0.05" title="Zoom In">
+                                <i class="material-icons">zoom_in</i>
+                            </md-button>
+                            <md-button class="md-icon-button" aria-label="Zoom Out" data-method="zoom" data-option="-0.05" title="Zoom Out">
+                                <i class="material-icons">zoom_out</i>
+                            </md-button>
+                            <md-button class="md-icon-button" aria-label="Rotate Left" data-method="rotate" data-option="-1" title="Rotate Left">
+                                <i class="material-icons">rotate_left</i>
+                            </md-button>
+                            <md-button class="md-icon-button" aria-label="Rotate Right" data-method="rotate" data-option="1" title="Rotate Right">
+                                <i class="material-icons">rotate_right</i>
+                            </md-button>
+                        </div>
+                        <div layout="row">
+                            <md-button class="md-icon-button" aria-label="Flip Horizontal" data-method="scaleX" data-option="-1" title="Flip Horizontal">
+                                <i class="material-icons">flip</i>
+                            </md-button>
+                            <!--                    <md-button class="md-primary" aria-label="Flip Vertical" data-method="scaleY" data-option="-1" title="Flip Vertical">
+                                                Flip Vertical
+                                            </md-button>-->
+                            <md-button class="md-icon-button" aria-label="Reset" data-method="reset" title="Reset">
+                                <i class="material-icons">refresh</i>
+                            </md-button>
+                        </div>
+                        <div layout="row">
+                            <md-button class="md-icon-button" aria-label="Upload" ng-click="uploadFile()" title="Upload">
+                                <i class="material-icons md-dark">file_upload</i>
+                            </md-button>
+                            <input type="file" id="inputImage" name="file" accept="image/*" style="position: absolute;left:-300px;width: 0;height: 0;">
 
-                    <md-button class="md-primary" aria-label="Move" data-method="setDragMode" data-option="move" title="Move">
-                        Move
-                    </md-button>
-                    <md-button class="md-primary" aria-label="Crop" data-method="setDragMode" data-option="crop" title="Crop">
-                        Draw
-                    </md-button>
-
-                    <md-button class="md-primary" aria-label="Zoom In" data-method="zoom" data-option="0.05" title="Zoom In">
-                        Zoom In
-                    </md-button>
-                    <md-button class="md-primary" aria-label="Zoom Out" data-method="zoom" data-option="-0.05" title="Zoom Out">
-                        Zoom Out
-                    </md-button>
-
-                    <md-button class="md-primary" aria-label="Move Left" data-method="move" data-option="-5" data-second-option="0" title="Move Left">
-                        Move Left
-                    </md-button>
-                    <md-button class="md-primary" aria-label="Move Right" data-method="move" data-option="5" data-second-option="0" title="Move Right">
-                        Move Right
-                    </md-button>
-                    <md-button class="md-primary" aria-label="Move Up" data-method="move" data-option="0" data-second-option="-5" title="Move Up">
-                        Move Up
-                    </md-button>
-                    <md-button class="md-primary" aria-label="Move Down" data-method="move" data-option="0" data-second-option="5" title="Move Down">
-                        Move Down
-                    </md-button>
-
-                    <md-button class="md-primary" aria-label="Rotate Left" data-method="rotate" data-option="-1" title="Rotate Left">
-                        Rotate Left
-                    </md-button>
-                    <md-button class="md-primary" aria-label="Rotate Right" data-method="rotate" data-option="1" title="Rotate Right">
-                        Rotate Right
-                    </md-button>
-
-                    <md-button class="md-primary" aria-label="Flip Horizontal" data-method="scaleX" data-option="-1" title="Flip Horizontal">
-                        Flip Horizontal
-                    </md-button>
-                    <md-button class="md-primary" aria-label="Flip Vertical" data-method="scaleY" data-option="-1" title="Flip Vertical">
-                        Flip Vertical
-                    </md-button>
-
-                    <md-button class="md-primary" aria-label="Reset" data-method="reset" title="Reset">
-                        Reset
-                    </md-button>
-
-                    <md-button aria-label="Upload" ng-click="uploadFile()">
-                        Upload
-                    </md-button>
-                    <input type="file" id="inputImage" name="file" accept="image/*" style="position: absolute;left:-300px;width: 0;height: 0;">
-
-                    <div class="btn-group btn-group-crop">
-                        <md-button class="md-primary" aria-label="Reset" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 75, &quot;height&quot;: 113 }">
-                            Save
-                        </md-button>
+                            <md-button class="md-icon-button" aria-label="Reset" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 75, &quot;height&quot;: 113 }">
+                                <i class="material-icons">save</i>
+                            </md-button>
+                        </div>
                     </div>
                 </div>
             </div>
